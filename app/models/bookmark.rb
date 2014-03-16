@@ -1,26 +1,38 @@
+# == Schema Information
+#
+# Table name: bookmarks
+#
+#  id          :integer          not null, primary key
+#  user_id     :integer
+#  title       :string(255)
+#  url         :string(255)
+#  description :text
+#  keywords    :text
+#  notes       :text
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 class Bookmark < ActiveRecord::Base
-	has_many :tags
+	belongs_to :user
+	has_many :bookmark_tag_associations
+	has_many :tags, through: :bookmark_tag_associations
 
 	def self.import_chrome
-		html = open("tmp/bookmarks_3_16_14.html").read
-
-		#fixing html that nokogiri can't handle well
-		html = html.gsub("<p>", "")
-		html = html.gsub("</A>", "</A></DT>")
-		doc = Nokogiri::HTML(html)
-
-		chrome_recursive(doc.css("body > dl > dt"), 0)
-	end
-
-	def self.chrome_recursive(dts, parent_id)
-		dts.each do |dt|
-			if dt.css(" > h3").length > 0
-				#category
-				puts ("   " * parent_id) + dt.css(" > h3").text.upcase
-				chrome_recursive(dt.xpath("following-sibling::dl[1]/dt"), parent_id + 1)
-			elsif dt.css(" > a").length > 0
-				#bookmark
-				puts ("   " * parent_id) + dt.css(" > a").text.gsub("\r", "").gsub("\n", "").strip
+		current_user = User.find_or_create_by(id: 1)
+		bookmarks = Markio::parse(open("tmp/bookmarks_3_16_14.html"))
+		bookmarks.each do |b|
+			bookmark = current_user.bookmarks.find_or_create_by(url: b.href)
+			bookmark.title = b.title
+			bookmark.created_at = b.add_date
+			bookmark.updated_at = b.last_modified
+			bookmark.save
+			parent_id = 0
+			b.folders.each do |category_name|
+				tag = current_user.tags.find_or_create_by(title: category_name, tag_type: "category", tag_id: parent_id)
+				parent_id = tag.id
+				puts tag
+				bookmark.bookmark_tag_associations.create(tag_id: tag.id)
 			end
 		end
 	end

@@ -11,10 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20140316130208) do
+ActiveRecord::Schema.define(version: 20140316195715) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "bookmark_tag_associations", force: true do |t|
+    t.integer  "tag_id"
+    t.integer  "bookmark_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "bookmarks", force: true do |t|
     t.integer  "user_id"
@@ -27,12 +34,20 @@ ActiveRecord::Schema.define(version: 20140316130208) do
     t.datetime "updated_at"
   end
 
+  add_index "bookmarks", ["url", "user_id"], name: "index_bookmarks_on_url_and_user_id", unique: true, using: :btree
+
   create_table "tags", force: true do |t|
     t.integer  "user_id"
-    t.integer  "bookmark_id"
     t.string   "title"
-    t.string   "type"
-    t.integer  "parent_tag_id"
+    t.string   "tag_type"
+    t.integer  "tag_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "tags", ["user_id", "title", "tag_type", "tag_id"], name: "index_tags_on_user_id_and_title_and_tag_type_and_tag_id", unique: true, using: :btree
+
+  create_table "users", force: true do |t|
     t.datetime "created_at"
     t.datetime "updated_at"
   end
