@@ -1,0 +1,10 @@
+// Extra Large Grid
+.container {
+  @media (min-width: $screen-xlg-min) {
+    width: $container-xlg;
+  }
+}
+
+@media (min-width: $screen-xlg-min) {
+  @include make-grid(xlg);
+}

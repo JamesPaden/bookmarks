@@ -1,0 +1,12 @@
+.bookmark {
+	position: relative;
+	padding: 15px;
+
+	.bookmark-title {
+		white-space: nowrap;
+		text-overflow: ellipsis;
+		overflow: hidden;
+		font-size: 12px;
+		padding-bottom: 1px;
+	}
+}

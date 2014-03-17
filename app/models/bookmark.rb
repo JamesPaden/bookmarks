@@ -21,6 +21,7 @@ class Bookmark < ActiveRecord::Base
 	def self.import_chrome
 		current_user = User.find_or_create_by(id: 1)
 		bookmarks = Markio::parse(open("tmp/bookmarks_3_16_14.html"))
+		Bookmark.record_timestamps = true
 		bookmarks.each do |b|
 			bookmark = current_user.bookmarks.find_or_create_by(url: b.href)
 			bookmark.title = b.title
@@ -35,5 +36,6 @@ class Bookmark < ActiveRecord::Base
 				bookmark.bookmark_tag_associations.create(tag_id: tag.id)
 			end
 		end
+		Bookmark.record_timestamps = true
 	end
 end

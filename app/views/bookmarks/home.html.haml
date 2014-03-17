@@ -1,0 +1,6 @@
+.row
+	- @bookmarks.each do |bookmark|
+		.col-lg-4.bookmark
+			.bookmark-title= bookmark.title
+
+			%img.img-responsive{ src: "http://images.shrinktheweb.com/xino.php?stwembed=1&stwaccesskeyid=00078fda32c1115&stwxmax=500&stwurl=" + CGI::escape(bookmark.url) }

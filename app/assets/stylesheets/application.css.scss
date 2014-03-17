@@ -1,0 +1,17 @@
+/*
+*= require_self
+*= require font-awesome
+*/
+
+$grid-gutter-width:         30px !default;
+$screen-xlg:                  1550px !default;
+$screen-xlg-min:              $screen-xlg !default;
+$screen-xlg-desktop:          $screen-xlg-min !default;
+$container-xlarge-desktop:      (($screen-xlg + $grid-gutter-width)) !default;
+$container-xlg:                 $container-xlarge-desktop !default;
+
+
+// import original bootstrap
+@import "bootstrap";
+@import "style";
+@import "bootstrap_custom";
