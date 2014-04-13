@@ -10,7 +10,7 @@
 #
 
 class BookmarkTagAssociation < ActiveRecord::Base
-	belongs_to :bookmarks
-	belongs_to :tags
+	belongs_to :bookmark
+	belongs_to :tag
 	validates_uniqueness_of :bookmark, scope: [:tag], on: :create
 end

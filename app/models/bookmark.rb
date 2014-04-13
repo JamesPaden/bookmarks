@@ -62,7 +62,6 @@ class Bookmark < ActiveRecord::Base
 			b.folders.each do |category_name|
 				tag = current_user.tags.find_or_create_by(title: category_name, tag_type: "category", tag_id: parent_id)
 				parent_id = tag.id
-				puts tag
 				bookmark.bookmark_tag_associations.create(tag_id: tag.id)
 			end
 		end
