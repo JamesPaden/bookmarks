@@ -1,0 +1,19 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<Annotations start="0" num="4" total="4">
+  <Annotation about="*.kapost.com/*" score="1" timestamp="0x0004f6ee635f7db0" href="Cg4qLmthcG9zdC5jb20vKhCw-_2a5t29Ag">
+    <Label name="_cse_gem0qg60asy" />
+    <AdditionalData attribute="original_url" value="*.kapost.com" />
+  </Annotation>
+  <Annotation about="*.marketo.com/*" score="1" timestamp="0x0004f6ee635f7da8" href="Cg8qLm1hcmtldG8uY29tLyoQqPv9mubdvQI">
+    <Label name="_cse_gem0qg60asy" />
+    <AdditionalData attribute="original_url" value="*.marketo.com" />
+  </Annotation>
+  <Annotation about="*.eloqua.com/*" score="1" timestamp="0x0004f6ee635f7d88" href="Cg4qLmVsb3F1YS5jb20vKhCI-_2a5t29Ag">
+    <Label name="_cse_gem0qg60asy" />
+    <AdditionalData attribute="original_url" value="*.eloqua.com" />
+  </Annotation>
+  <Annotation about="www.xemion.com/*" score="1" timestamp="0x0004f57831032911" href="ChB3d3cueGVtaW9uLmNvbS8qEJHSjIiDr70C">
+    <Label name="_cse_5yoka0kmvyo" />
+    <AdditionalData attribute="original_url" value="www.xemion.com" />
+  </Annotation>
+</Annotations>

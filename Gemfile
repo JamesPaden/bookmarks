@@ -21,7 +21,7 @@ gem 'elasticsearch'
 gem 'elasticsearch-model'
 gem 'elasticsearch-rails'
 gem 'font-awesome-rails'
-gem 'haml'
+gem 'haml', '~> 4.0'
 gem 'httparty'
 gem 'nokogiri'
 gem 'markio'
@@ -40,6 +40,10 @@ end
 group :doc do
   # bundle exec rake doc:rails generates the API under doc/api.
   gem 'sdoc', require: false
+end
+
+group :production do
+	gem 'rails_12factor'
 end
 
 # Use ActiveModel has_secure_password
