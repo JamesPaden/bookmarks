@@ -1,6 +1,25 @@
 .row
+	=form_tag("/", method: "get") do
+		.col-sm-7
+			%input.form-control.input-lg{ type: "text", name: "q" }
+		.col-sm-5
+			%button.btn.btn-lg.btn-primary{ type: "submit", name: "args[include_pages]" } Search
+			%button.btn.btn-lg.btn-primary{ type: "submit", name: "args[include_pages]", value: "true" } Search Pages
+			%button.btn.btn-lg.btn-primary{ type: "submit" } Search Sites
+
+			.btn-group{ style: "display: none"}
+				%button.btn.btn-lg.btn-primary{ type: "button" } Search
+				%button.btn.btn-lg.btn-primary.dropdown-toggle{ type: "button", "data-toggle" => "dropdown" }
+					%span.caret
+					%span.sr-only Toggle Dropwdown
+				%ul.dropdown-menu{ role: "menu" }
+					%li
+						%a{ href: "#" } Search Entire Page
+						%a{ href: "#" } Search Entire Website
+.row
 	- @bookmarks.each do |bookmark|
 		.col-lg-4.bookmark
-			.bookmark-title= bookmark.title
-
-			%img.img-responsive{ src: "http://images.shrinktheweb.com/xino.php?stwembed=1&stwaccesskeyid=00078fda32c1115&stwxmax=500&stwurl=" + CGI::escape(bookmark.url) }
+			.bookmark-header
+				.bookmark-url= Bookmark.parse_domain(bookmark.url)
+				.bookmark-title= bookmark.title
+			%img.img-responsive{ src: "http://images.shrinktheweb.com/xino.php?stwembed=1&stwaccesskeyid=00078fda32c1115&stwxmax=600&stwurl=" + CGI::escape(bookmark.url) }

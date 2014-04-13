@@ -5,7 +5,7 @@
 #  id         :integer          not null, primary key
 #  user_id    :integer
 #  title      :string(255)
-#  type       :string(255)
+#  tag_type   :string(255)
 #  tag_id     :integer
 #  created_at :datetime
 #  updated_at :datetime

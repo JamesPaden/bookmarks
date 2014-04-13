@@ -14,9 +14,15 @@ gem 'turbolinks'
 
 #newstuff
 gem 'pg'
+gem 'alchemy-api-rb', :require => 'alchemy_api'
 gem 'bootstrap-sass'
-gem "font-awesome-rails"
+gem 'domainatrix'
+gem 'elasticsearch'
+gem 'elasticsearch-model'
+gem 'elasticsearch-rails'
+gem 'font-awesome-rails'
 gem 'haml'
+gem 'httparty'
 gem 'nokogiri'
 gem 'markio'
 
@@ -27,7 +33,7 @@ group :development do
 	gem 'guard-annotate'
 	gem 'guard-bundler'
 	gem 'guard-livereload'
-	gem 'guard-rails'
+	gem 'guard-rails', "~> 0.5"
 end
 
 
